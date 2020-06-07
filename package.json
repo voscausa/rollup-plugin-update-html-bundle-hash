@@ -1,0 +1,22 @@
+{
+  "name": "rollup-plugin-update-html-bundle-hash",
+  "version": "1.3.0",
+  "description": "update index.html bundle hash after build",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rollup",
+    "plugin",
+    "build",
+    "html",
+    "hash",
+    "bundle"
+  ],
+  "author": "voscausa",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
+}
