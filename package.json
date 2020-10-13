@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-update-html-bundle-hash",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "update index.html bundle hash after build",
   "main": "index.js",
   "scripts": {
