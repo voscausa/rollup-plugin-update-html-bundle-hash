@@ -22,7 +22,7 @@ module.exports = function (options = {}) {
   const {
     template = 'src/template.html', 
     target = 'public/index.html',
-    version = '1.0.0'
+    version = ''
   } = options;
 
   return {
@@ -34,11 +34,10 @@ module.exports = function (options = {}) {
       const buffer = await fs.readFile(template);
       const indexHtml = Object.keys(bundles).reduce((a, ext) => {
         if (bundles[ext]) a = a.replace(`bundle.${ext}`, bundles[ext]);
+        // if (bundles['js']) a = a.replace('1.0.0', version);
         return a;
-      }, buffer.toString("utf8"));
-      indexHtml.replace('1.0.0', version);
+      }, buffer.toString("utf8").replace('1.0.0', version));
       fs.writeFile(target, indexHtml);
     }
-
   };
 };
