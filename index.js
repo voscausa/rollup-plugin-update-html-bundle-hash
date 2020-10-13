@@ -21,7 +21,8 @@ function getHashedBundles(bundleInfo = {}) {
 module.exports = function (options = {}) {
   const {
     template = 'src/template.html', 
-    target = 'public/index.html'
+    target = 'public/index.html',
+    version = '1.0.0'
   } = options;
 
   return {
@@ -35,6 +36,7 @@ module.exports = function (options = {}) {
         if (bundles[ext]) a = a.replace(`bundle.${ext}`, bundles[ext]);
         return a;
       }, buffer.toString("utf8"));
+      indexHtml.replace('1.0.0', version);
       fs.writeFile(target, indexHtml);
     }
 
