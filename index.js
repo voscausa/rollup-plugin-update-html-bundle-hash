@@ -1,9 +1,12 @@
 "use strict";
 const fs = require('fs-extra');
 
-// Example template patterns to update:  
-// js: <script src='/build/bundle.js' defer></script>
-// css: <link rel='stylesheet' href='/build/bundle.css'>
+// Example template patterns in "template.html" to update:  
+// - <meta name="version" content="1.0.0"> 
+// - js: <script src='/build/bundle.js' defer></script>
+// - css: <link rel='stylesheet' href='/build/bundle.css'>
+
+// to update the pakage json "version"" " use: npm version patch -git-tag-version false
 
 // get the bundles per extension if we have a hashed bundle
 function getHashedBundles(bundleInfo = {}) {  
@@ -34,7 +37,6 @@ module.exports = function (options = {}) {
       const buffer = await fs.readFile(template);
       const indexHtml = Object.keys(bundles).reduce((a, ext) => {
         if (bundles[ext]) a = a.replace(`bundle.${ext}`, bundles[ext]);
-        // if (bundles['js']) a = a.replace('1.0.0', version);
         return a;
       }, buffer.toString("utf8").replace('1.0.0', version));
       fs.writeFile(target, indexHtml);
